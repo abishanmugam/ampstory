@@ -1,124 +1,132 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Head from 'next/head';
 
-const inter = Inter({ subsets: ['latin'] })
+export const config = { amp: true };
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <>
+      <Head>
+        <title>Example AMP Story in Next.js</title>
+        <script
+          async
+          key="amp-story"
+          custom-element="amp-story"
+          src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
         />
-      </div>
+        <script
+          async
+          key="amp-video"
+          custom-element="amp-video"
+          src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
+        />
+      </Head>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <amp-story
+        standalone=""
+        title="Stories in AMP - Hello World"
+        publisher="AMP Project"
+        publisher-logo-src="https://amp.dev/favicons/coast-228x228.png"
+        poster-portrait-src="https://amp.dev/static/samples/img/story_dog2_portrait.jpg"
+        poster-square-src="https://amp.dev/static/samples/img/story_dog2_square.jpg"
+        poster-landscape-src="https://amp.dev/static/samples/img/story_dog2_landscape.jpg"
+      >
+        {/* <!-- A story consists of one or more pages. Each page is declared by an `amp-story-page` element. Pages are designed by layering videos, images and text. Here we have a page that uses two layers. One layer filling the available space with an image and one text layer that shows a heading. --> */}
+        <amp-story-page id="page-1">
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src="https://amp.dev/static/samples/img/story_dog2.jpg"
+              width="720"
+              height="1280"
+              layout="responsive"
+              alt="Story Dog 2"
+            />
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="vertical">
+            <h1>Hello World</h1>
+            <p>This is an AMP Story.</p>
+          </amp-story-grid-layer>
+        </amp-story-page>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        {/* <!-- Here we have a page consisting of a video which autoplays and loops. --> */}
+        <amp-story-page id="page-2">
+          <amp-story-grid-layer template="fill">
+            <amp-video
+              autoplay=""
+              loop=""
+              width="720"
+              height="960"
+              poster="https://amp.dev/static/samples/img/story_video_dog_cover.jpg"
+              layout="responsive"
+            >
+              <source
+                src="https://amp.dev/static/samples/video/story_video_dog.mp4"
+                type="video/mp4"
+              />
+            </amp-video>
+          </amp-story-grid-layer>
+        </amp-story-page>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+        {/* <!-- Pre-defined entry animations make it possible to create dynamic pages without videos. The length and initial delay can be customized using the `animate-in-duration` and `animate-in-delay` properties. The [animations sample](/documentation/examples/visual-effects/amp_story_animations/) shows all available animantions in action. --> */}
+        <amp-story-page id="animation-demo">
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src="https://amp.dev/static/samples/img/story_dog4.jpg"
+              animate-in="fly-in-top"
+              width="720"
+              height="1280"
+              layout="responsive"
+              alt="Story Dog 4"
+            />
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="thirds">
+            <h2
+              animate-in="fly-in-bottom"
+              grid-area="lower-third"
+              animate-in-delay="0.4s"
+            >
+              Best walk ever!
+            </h2>
+          </amp-story-grid-layer>
+        </amp-story-page>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+        {/* <!-- Stories can use predefined layouts to style the page. Here we're using the `thirds` template. For an overview about the available layouts take a look at the [layouts sample](/documentation/examples/style-layout/amp_story_layouts/). --> */}
+        <amp-story-page id="layout-demo">
+          <amp-story-grid-layer template="thirds">
+            <amp-img
+              grid-area="upper-third"
+              src="https://amp.dev/static/samples/img/story_thirds_1.jpg"
+              width="560"
+              height="420"
+              layout="responsive"
+              alt="Story Thirds 1"
+            />
+            <amp-img
+              grid-area="middle-third"
+              src="https://amp.dev/static/samples/img/story_thirds_2.jpg"
+              width="560"
+              height="420"
+              layout="responsive"
+              alt="Story Thirds 2"
+            />
+            <amp-img
+              grid-area="lower-third"
+              src="https://amp.dev/static/samples/img/story_thirds_3.jpg"
+              width="560"
+              height="420"
+              layout="responsive"
+              alt="Story Thirds 3"
+            />
+          </amp-story-grid-layer>
+        </amp-story-page>
+
+        {/* <!-- A "bookend" panel containing links to other resources will appear on the last page of your story if you include an `amp-story-bookend` that references a [bookend JSON config](/static/samples/json/bookend.json). --> */}
+        <amp-story-bookend
+          src="https://amp.dev/static/samples/json/bookend.json"
+          layout="nodisplay"
+        />
+      </amp-story>
+    </>
+  );
+};
+
+export default Home;
